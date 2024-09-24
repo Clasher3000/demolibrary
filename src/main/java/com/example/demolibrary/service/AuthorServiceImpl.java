@@ -1,14 +1,14 @@
 package com.example.demolibrary.service;
 
 import com.example.demolibrary.entity.Author;
-import com.example.demolibrary.repository.AuthorRepository;
+import com.example.demolibrary.repository.AuthorRepositoryImpl;
 
 import java.util.List;
 
 public class AuthorServiceImpl implements AuthorService {
-    private AuthorRepository authorRepository;
+    private AuthorRepositoryImpl authorRepository;
 
-    public AuthorServiceImpl(AuthorRepository authorRepository) {
+    public AuthorServiceImpl(AuthorRepositoryImpl authorRepository) {
         this.authorRepository = authorRepository;
     }
 
