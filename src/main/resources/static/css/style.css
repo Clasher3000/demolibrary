@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h4 {
+    font-family: 'Merriweather', serif;
+}
+
+h2 {
+    font-weight: bold; /* Make the heading bold */
+}
+
+.nav-link {
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #f0ad4e !important;
+}
+
+/* Card Style for Contact Info */
+.contact-card {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.contact-card h4 {
+    border-bottom: 2px solid #f0ad4e;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+/* Gradient Background */
+.bg-gradient {
+    background: linear-gradient(45deg, #343a40, #495057);
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    max-height: 250px; /* Максимальна висота зображення */
+    object-fit: contain; /* Підгонка зображення в рамках без обрізки */
+}
+.btn {
+    transition: transform 0.3s, background-color 0.3s;
+    background-color: white; /* Set the default background color to white */
+    color: orange; /* Text color to match the original button */
+    border: 2px solid orange; /* Set a border that matches the original color */
+}
+
+.btn:hover {
+    transform: scale(1.06); /* Slightly increase size */
+    background-color: cadetblue; /* Change background color to a shade of blue */
+    color:white; /* Change text color to white on hover */
+    border-color: #1e7685; /* Darker shade for the border on hover */
+}
+.active-link {
+    color: cadetblue; /* Change text color for better contrast */
+}

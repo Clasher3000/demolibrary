@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Library</title>
+    <!-- Підключення Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-dark text-white py-3">
+    <div class="container">
+        <h1 class="text-center">Library</h1>
+        <nav class="d-flex justify-content-center">
+            <ul class="nav">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link active-link">Home</a></li>
+                <li class="nav-item"><a th:href="@{/books}" class="nav-link text-white">Books</a></li>
+                <li class="nav-item"><a th:href="@{/authors}" class="nav-link text-white">Authors</a></li>
+                <li class="nav-item"><a th:href="@{/about}" class="nav-link text-white">About</a></li>
+                <li class="nav-item"><a th:href="@{/contact}" class="nav-link text-white">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main content -->
+<main class="container my-5">
+    <div class="text-center">
+        <h2>Welcome to the Library</h2>
+        <p class="lead">Discover a wide range of books and resources for every taste and interest.</p>
+        <p>Whether you're looking for the latest bestsellers, timeless classics, or something educational, we've got it all. Explore our collection and start reading today.</p>
+        <a href="/books" class="btn btn-primary btn-lg my-3">Browse Books</a>
+    </div>
+
+    <!-- Highlighted Sections -->
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="https://i.imgur.com/jAQQxYJ.png" class="card-img-top" alt="Book Collection">
+                <div class="card-body">
+                    <h5 class="card-title">Our Collection</h5>
+                    <p class="card-text">Explore thousands of books across various genres including fiction, non-fiction, history, science, and more.</p>
+                    <a th:href="@{/books}" class="btn btn-outline-primary">View Collection</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="https://i.imgur.com/e4U1s3H.png" class="card-img-top" alt="Membership">
+                <div class="card-body">
+                    <h5 class="card-title">Membership Benefits</h5>
+                    <p class="card-text">Become a member and enjoy unlimited access to books, events, and exclusive discounts.</p>
+                    <a th:href="@{/about}" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="https://i.imgur.com/ZrKLH3B.png" class="card-img-top" alt="Library Events">
+                <div class="card-body">
+                    <h5 class="card-title">Upcoming Events</h5>
+                    <p class="card-text">Join us for book signings, reading sessions, and other exciting events at the library.</p>
+                    <a th:href="@{/contact}" class="btn btn-outline-primary">Get Involved</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-3">
+    <div class="container text-center">
+        <p>&copy; 2024 Library. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Підключення Bootstrap JS та залежностей -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
