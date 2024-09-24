@@ -12,8 +12,10 @@ import java.util.List;
 public class BookRepository {
     public List findAll(){
         List<Book> books = new ArrayList<>();
-        books.add(new Book(1,"1984",null, 1949,"https://i.imgur.com/PO4oR4q.png"));
-        books.add(new Book(2,"Robinson Crusoe",null,1719,"https://i.imgur.com/KoPuIzH.png"));
+        books.add(new Book(1,"1984",null,
+                1949,"https://i.imgur.com/PO4oR4q.png"));
+        books.add(new Book(2,"Robinson Crusoe",null,
+                1719,"https://i.imgur.com/KoPuIzH.png"));
         return books;
 
     }
