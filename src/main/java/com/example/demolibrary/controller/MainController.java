@@ -19,8 +19,5 @@ public class MainController {
     public String getContact() {
         return "contact";
     }
-    @GetMapping("/authors")
-    public String getAuthor() {
-        return "authors";
-    }
+
 }

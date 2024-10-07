@@ -8,16 +8,18 @@ public class Book {
     private String title;
     private Author author;
     private int year;
+    private String description;
     private String cover;
 
     public Book() {
     }
 
-    public Book(int id, String title, Author author, int year,String cover) {
+    public Book(int id, String title, Author author, int year,String description,String cover) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
+        this.description = description;
         this.cover = cover;
     }
 
@@ -61,6 +63,14 @@ public class Book {
         this.cover = cover;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -68,6 +78,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author=" + author +
                 ", year=" + year +
+                ", description=" + description +
                 ", cover='" + cover + '\'' +
                 '}';
     }

@@ -5,5 +5,7 @@ import com.example.demolibrary.entity.Author;
 import java.util.List;
 
 public interface AuthorRepository {
-    public List<Author> findAll();
+    List<Author> findAll();
+
+    Author findById(int id);
 }
