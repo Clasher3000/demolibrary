@@ -19,6 +19,7 @@
 </head>
 <body>
 
+<div class="d-flex flex-column min-vh-100">
 <header class="bg-dark text-white py-3">
     <div class="container d-flex justify-content-between align-items-center">
         <h1 class="text-center flex-grow-1">Library</h1>
@@ -41,11 +42,14 @@
     </div>
 </header>
 
+    <div class="flex-grow-1">
 <main class="container my-5">
     <div class="row">
         <div class="col-md-4 text-center">
-            <img th:if="${author.img!=null}" th:src="${author.img}" class="img-fluid rounded mb-4 shadow" style="height: 500px; object-fit: cover;" alt="Author Image">
-            <img th:if="${author.img==null}" th:src="@{/Images/unknown-author.png}" class="img-fluid rounded mb-4 shadow" style="height: 500px; object-fit: cover;" alt="Unknown Author Image">
+            <img th:if="${author.img!=null}" th:src="${author.img}" class="img-fluid rounded mb-4 shadow"
+                 style="height: 500px; object-fit: cover;" alt="Author Image">
+            <img th:if="${author.img==null}" th:src="@{/Images/unknown-author.png}"
+                 class="img-fluid rounded mb-4 shadow" style="height: 500px; object-fit: cover;" alt="Unknown Author Image">
         </div>
         <div class="col-md-4">
             <h2 th:text="${author.firstName} + ' ' + ${author.lastName}" class="text-warning mb-3"></h2>
@@ -53,12 +57,15 @@
             <p th:if="${author.dateOfBirth==null}" class="text-warning"><strong>Date of birth is unknown</strong></p>
             <p><strong>Date of Birth:</strong> <span th:text="${#temporals.format(author.dateOfBirth, 'dd.MM.yyyy')}"></span></p>
             <p th:if="${author.dateOfDeath != null}">
-                <strong>Date of Death:</strong> <span th:text="${#temporals.format(author.dateOfDeath, 'dd.MM.yyyy')}"></span>
-                <span th:text="' (' + ${T(java.time.Period).between(author.dateOfBirth, author.dateOfDeath).getYears()} + ') '"></span> years
+                <strong>Date of Death:</strong> <span
+                    th:text="${#temporals.format(author.dateOfDeath, 'dd.MM.yyyy')}"></span>
+                <span th:text="' (' + ${T(java.time.Period).between(author.dateOfBirth,
+                author.dateOfDeath).getYears()} + ') '"></span> years
             </p>
             <p th:if="${author.dateOfDeath == null}">
                 <strong>Age:</strong>
-                <span th:text="${T(java.time.Period).between(author.dateOfBirth, T(java.time.LocalDate).now()).getYears()}"></span> years
+                <span th:text="${T(java.time.Period).between(author.dateOfBirth,
+                T(java.time.LocalDate).now()).getYears()}"></span> years
             </p>
 
             <a class="btn btn-outline-warning mt-4" th:href="@{/authors}">Back to Authors</a>
@@ -68,12 +75,14 @@
             <h3 class="text-center mb-4" th:text="'Books by ' + ${author.firstName} + ' ' + ${author.lastName}"></h3>
             <div th:if="${author.books!=null}" id="booksCarousel" class="carousel slide my-5" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active" th:each="book, iterStat : ${author.books}" th:class="${iterStat.first} ? 'active' : ''">
+                    <div class="carousel-item active" th:each="book, iterStat : ${author.books}"
+                         th:class="${iterStat.first} ? 'active' : ''">
                         <div class="d-flex justify-content-center align-items-center">
                             <div class="text-center">
                                 <img th:src="${book.cover}" class="d-block" style="height: 350px;" alt="Book Cover">
                                 <h6 class="book-title mt-2" th:text="${book.title}"></h6>
-                                <a class="btn btn-warning btn-lg text-white" th:href="@{/books/{id}(id=${book.id})}">Info</a>
+                                <a class="btn btn-warning btn-lg text-white"
+                                   th:href="@{/books/{id}(id=${book.id})}">Info</a>
                             </div>
                         </div>
                     </div>
@@ -93,13 +102,13 @@
         </div>
     </div>
 </main>
-
+    </div>
 <footer class="bg-dark text-white py-3">
     <div class="container text-center">
         <p>&copy; 2024 Library. All rights reserved.</p>
     </div>
 </footer>
-
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.min.js"></script>
