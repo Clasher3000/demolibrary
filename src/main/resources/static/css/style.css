@@ -70,3 +70,15 @@ html {
 .active-link {
     color: cadetblue; /* Change text color for better contrast */
 }
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Вищий z-index, щоб кнопка була поверх інших елементів */
+}
+.fixed-button-update {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 1000; /* Вищий z-index, щоб кнопка була поверх інших елементів */
+}

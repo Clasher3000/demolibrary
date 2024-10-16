@@ -54,4 +54,14 @@ public class BookServiceImpl implements BookService {
     public void delete(Book book) {
         bookRepository.delete(book);
     }
+
+    @Override
+    public void update(Book book) {
+
+        if (bookRepository.existsById(book.getId())) {
+           bookRepository.save(book);
+        } else {
+            throw new RuntimeException("Book not found for id: " + book.getId());
+        }
+    }
 }

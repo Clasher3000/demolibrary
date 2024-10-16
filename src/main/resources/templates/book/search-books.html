@@ -37,6 +37,16 @@
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
       </div>
+
+      <!-- Логін/Логаут кнопка -->
+      <div class="ms-3">
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+          <a th:href="@{/logout}"  class="btn btn-danger">Logout</a>
+        </div>
+        <div th:unless="${#authorization.expression('isAuthenticated()')}">
+          <a th:href="@{/login}" class="btn btn-success">Login</a>
+        </div>
+      </div>
     </div>
   </header>
   <div class="flex-grow-1">

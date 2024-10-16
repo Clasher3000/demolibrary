@@ -23,4 +23,21 @@ public class AuthorServiceImpl implements AuthorService {
     public Author findById(int id) {
         return authorRepository.findById(id);
     }
+
+    @Override
+    public Author save(Author author) {
+        return authorRepository.save(author);
+    }
+
+    public void update(Author author) {
+        // Перевірка, чи автор існує в базі даних перед оновленням
+        if (authorRepository.existsById(author.getId())) {
+            authorRepository.save(author); // Зберігаємо оновленого автора
+        } else {
+            throw new RuntimeException("Author not found for id: " + author.getId());
+        }
+    }
+    public void deleteById(int id) {
+        authorRepository.deleteById(id);
+    }
 }

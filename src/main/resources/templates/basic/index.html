@@ -12,27 +12,38 @@
 
 <div class="d-flex flex-column min-vh-100">
 <!-- Header -->
-<header class="bg-dark text-white py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-        <h1 class="text-center flex-grow-1">Library</h1>
-        <nav class="d-flex justify-content-center flex-grow-1">
-            <ul class="nav">
-                <li class="nav-item"><a th:href="@{/}" class="nav-link active-link">Home</a></li>
-                <li class="nav-item"><a th:href="@{/books}" class="nav-link text-white">Books</a></li>
-                <li class="nav-item"><a th:href="@{/authors}" class="nav-link text-white">Authors</a></li>
-                <li class="nav-item"><a th:href="@{/about}" class="nav-link text-white">About</a></li>
-                <li class="nav-item"><a th:href="@{/contact}" class="nav-link text-white">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Search Bar -->
-        <div class="d-flex">
-            <form th:action="@{/search}" method="get" class="d-flex">
-                <input type="text" name="query" class="form-control me-2" placeholder="Search books..." aria-label="Search" style="width: 250px;" />
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
+    <!-- Header -->
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="text-center flex-grow-1">Library</h1>
+            <nav class="d-flex justify-content-center flex-grow-1">
+                <ul class="nav">
+                    <li class="nav-item"><a th:href="@{/}" class="nav-link text-white">Home</a></li>
+                    <li class="nav-item"><a th:href="@{/books}" class="nav-link active-link">Books</a></li>
+                    <li class="nav-item"><a th:href="@{/authors}" class="nav-link text-white">Authors</a></li>
+                    <li class="nav-item"><a th:href="@{/about}" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a th:href="@{/contact}" class="nav-link text-white">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Search Bar -->
+            <div class="d-flex">
+                <form th:action="@{/books/search}" method="get" class="d-flex">
+                    <input type="text" name="query" class="form-control me-2" placeholder="Search books..." aria-label="Search" style="width: 250px;" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+
+            <!-- Логін/Логаут кнопка -->
+            <div class="ms-3">
+                <div th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a th:href="@{/logout}"  class="btn btn-danger">Logout</a>
+                </div>
+                <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                    <a th:href="@{/login}" class="btn btn-success">Login</a>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
     <div class="flex-grow-1">
 <!-- Main content -->
 <main class="container my-5">

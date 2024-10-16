@@ -9,4 +9,10 @@ public interface AuthorService {
 
     Author findById(int id);
 
+    Author save(Author author);
+
+
+    void update(Author author);
+
+    void deleteById(int id);
 }

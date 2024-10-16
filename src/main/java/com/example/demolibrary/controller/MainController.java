@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String getHome() {
-        return "index";
+        return "basic/index";
     }
     @GetMapping("/about")
     public String getAbout() {
-        return "about";
+        return "basic/about";
     }
     @GetMapping("/contact")
     public String getContact() {
-        return "contact";
+        return "basic/contact";
     }
 
 }
