@@ -37,7 +37,8 @@
 <!-- Main Content -->
 <main class="container my-5">
   <h2 class="text-center mb-4">List of Authors</h2>
-  <table class="table table-bordered table-hover">
+  <h1 th:if="${authors==null}">There are no authors yet.</h1>
+  <table th:if="${authors!=null}" class="table table-bordered table-hover">
     <thead class="table-dark">
     <tr>
       <th>First Name</th>

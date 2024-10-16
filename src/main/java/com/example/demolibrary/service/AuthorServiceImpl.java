@@ -1,16 +1,16 @@
 package com.example.demolibrary.service;
 
 import com.example.demolibrary.entity.Author;
-import com.example.demolibrary.repository.AuthorRepositoryImpl;
+import com.example.demolibrary.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
-    private AuthorRepositoryImpl authorRepository;
+    private AuthorRepository authorRepository;
 
-    public AuthorServiceImpl(AuthorRepositoryImpl authorRepository) {
+    public AuthorServiceImpl(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
 

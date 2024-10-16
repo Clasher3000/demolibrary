@@ -1,108 +1,31 @@
 package com.example.demolibrary.entity;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@Data
+@Entity
 public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String country;
+    @OneToMany(mappedBy = "author",
+            cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
     private List<Book> books;
-    private String img;  // URL або шлях до зображення
-    private LocalDate dateOfBirth; // Дата народження
-    private LocalDate dateOfDeath; // Дата смерті (якщо застосовно)
+    private String img;
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+    @Column(name = "date_of_death")
+    private LocalDate dateOfDeath;
 
-    public Author() {
-    }
 
-    public Author(int id, String firstName, String lastName, String country, List<Book> books, String img, LocalDate dateOfBirth, LocalDate dateOfDeath) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.country = country;
-        this.books = books;
-        this.img = img;
-        this.dateOfBirth = dateOfBirth;
-        this.dateOfDeath = dateOfDeath;
-    }
-
-    // Геттери та сеттери
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public LocalDate getDateOfDeath() {
-        return dateOfDeath;
-    }
-
-    public void setDateOfDeath(LocalDate dateOfDeath) {
-        this.dateOfDeath = dateOfDeath;
-    }
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", country='" + country + '\'' +
-                ", book=" + books +
-                ", img='" + img + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", dateOfDeath=" + dateOfDeath +
-                '}';
-    }
 }
