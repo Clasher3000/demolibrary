@@ -1,7 +1,6 @@
 package com.example.demolibrary.service;
 
 import com.example.demolibrary.entity.Author;
-import com.example.demolibrary.entity.Book;
 import com.example.demolibrary.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 

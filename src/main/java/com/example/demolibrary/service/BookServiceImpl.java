@@ -1,9 +1,7 @@
 package com.example.demolibrary.service;
 
-import com.example.demolibrary.entity.Author;
 import com.example.demolibrary.entity.Book;
 import com.example.demolibrary.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

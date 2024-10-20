@@ -1,9 +1,6 @@
 package com.example.demolibrary.controller;
 
-import com.example.demolibrary.entity.Book;
-import com.example.demolibrary.entity.Keyword;
-import com.example.demolibrary.repository.KeywordRepository;
-import com.example.demolibrary.service.BookService;
+
 import com.example.demolibrary.service.KeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
