@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
     <nav class="d-flex justify-content-center flex-grow-1">
       <ul class="nav">
         <li class="nav-item"><a th:href="@{/}" class="nav-link text-white">Home</a></li>
-        <li class="nav-item"><a th:href="@{/books}" class="nav-link active-link">Books</a></li>
-        <li class="nav-item"><a th:href="@{/authors}" class="nav-link text-white">Authors</a></li>
+        <li class="nav-item"><a th:href="@{/books}" class="nav-link text-white">Books</a></li>
+        <li class="nav-item"><a th:href="@{/authors}" class="nav-link active-link">Authors</a></li>
         <li class="nav-item"><a th:href="@{/about}" class="nav-link text-white">About</a></li>
         <li class="nav-item"><a th:href="@{/contact}" class="nav-link text-white">Contact</a></li>
       </ul>
@@ -68,7 +68,7 @@
     </tbody>
   </table>
 </main>
-  <button type="button" class="btn btn-lg btn-success fixed-button" data-bs-toggle="modal" data-bs-target="#addAuthorModal">
+  <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-lg btn-success fixed-button" data-bs-toggle="modal" data-bs-target="#addAuthorModal">
     +
   </button>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -99,7 +99,7 @@
     </main>
 
     <!-- Кнопка для відкриття модального вікна -->
-    <button type="button" class="btn btn-lg btn-success fixed-button" data-bs-toggle="modal" data-bs-target="#addBookModal">
+    <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-lg btn-success fixed-button" data-bs-toggle="modal" data-bs-target="#addBookModal">
       +
     </button>
 
@@ -122,6 +122,13 @@
               <div class="mb-3">
                 <label for="bookCover" class="form-label">Book Cover path</label>
                 <input type="text" th:field="*{cover}" class="form-control" id="bookCover" name="cover" placeholder="Enter url for image">
+              </div>
+              <div class="mb-3" >
+                <label for="bookAuthor" class="form-label">Book Author</label>
+                <select th:field="*{author}" class="form-control" id="bookAuthor">
+                  <option th:value="null">No author</option>
+                  <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName + ' ' + author.lastName}" ></option>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="bookYear" class="form-label">Book Year</label>

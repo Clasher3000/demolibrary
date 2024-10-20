@@ -62,9 +62,6 @@ public class BookServiceImpl implements BookService {
     public void update(Book book) {
 
         if (bookRepository.existsById(book.getId())) {
-            int authorId = book.getAuthor().getId();
-            Author author = authorService.findById(authorId);
-            book.setAuthor(author);
            bookRepository.save(book);
         } else {
             throw new RuntimeException("Book not found for id: " + book.getId());

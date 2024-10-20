@@ -31,7 +31,6 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     public void update(Author author) {
-
         if (authorRepository.existsById(author.getId())) {
             authorRepository.save(author); // Зберігаємо оновленого автора
         } else {

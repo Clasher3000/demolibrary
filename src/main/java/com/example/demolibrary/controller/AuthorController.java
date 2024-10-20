@@ -44,7 +44,7 @@ public class AuthorController {
     public String updateAuthor(@PathVariable int id, @ModelAttribute Author author) {
         author.setId(id);
         authorService.update(author);
-        return "redirect:/authors";
+        return "redirect:/authors/{id}";
     }
 
     @DeleteMapping("/{id}")

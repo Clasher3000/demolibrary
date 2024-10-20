@@ -26,12 +26,14 @@ public class BookController {
     @GetMapping()
     public String getBooks(Model model, @RequestParam(defaultValue = "0") int page) {
         int size = 6;
+        List<Author> authors = authorService.findAll();
         Page<Book> books = bookService.findAll(page, size);
         model.addAttribute("books", books);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", books.getTotalPages());
         model.addAttribute("totalItems", books.getTotalElements());
         model.addAttribute("emptyBook",new Book());
+        model.addAttribute("authors",authors);
         return "book/books"; // Ensure this path is correct
     }
 
@@ -65,11 +67,9 @@ public class BookController {
     @PutMapping("/{id}")
     public String updateBook(@PathVariable int id, @ModelAttribute Book book) {
         book.setId(id);
-
         bookService.update(book);
-
         System.out.println(book);
-        return "redirect:/books"; // Correct redirect path
+        return "redirect:/books/{id}";
     }
 
     @DeleteMapping("/{id}")

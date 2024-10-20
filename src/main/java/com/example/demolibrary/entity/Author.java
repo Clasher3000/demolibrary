@@ -3,14 +3,15 @@ package com.example.demolibrary.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
 @Entity
+@ToString(exclude = "books")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,18 +39,6 @@ public class Author {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfDeath;
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", country='" + country + '\'' +
-                ", img='" + img + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", dateOfDeath=" + dateOfDeath +
-                '}';
-    }
     public boolean hasBooks() {
         return books != null && !books.isEmpty();
     }
