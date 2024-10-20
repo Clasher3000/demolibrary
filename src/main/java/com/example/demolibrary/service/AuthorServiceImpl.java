@@ -1,6 +1,7 @@
 package com.example.demolibrary.service;
 
 import com.example.demolibrary.entity.Author;
+import com.example.demolibrary.entity.Book;
 import com.example.demolibrary.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +26,12 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author save(Author author) {
+    public Author save(Author author) {;
         return authorRepository.save(author);
     }
 
     public void update(Author author) {
-        // Перевірка, чи автор існує в базі даних перед оновленням
+
         if (authorRepository.existsById(author.getId())) {
             authorRepository.save(author); // Зберігаємо оновленого автора
         } else {

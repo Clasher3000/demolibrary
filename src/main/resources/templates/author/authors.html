@@ -61,12 +61,68 @@
     <tr th:each="author : ${authors}">
       <td th:text="${author.firstName}"></td>
       <td th:text="${author.lastName}"></td>
-      <td th:text="${author.country}"></td>
+      <td th:if="${!#strings.isEmpty(author.country)}" th:text="${author.country}"></td>
+      <td th:if="${#strings.isEmpty(author.country)}">Not known</td>
       <td><a th:href="@{/authors/{id}(id=${author.id})}" class="btn btn-info btn-sm">View Details</a></td>
     </tr>
     </tbody>
   </table>
 </main>
+  <button type="button" class="btn btn-lg btn-success fixed-button" data-bs-toggle="modal" data-bs-target="#addAuthorModal">
+    +
+  </button>
+
+  <!-- Модальне вікно -->
+  <div class="modal fade" id="addAuthorModal" tabindex="-1" aria-labelledby="addAuthorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAuthorModalLabel">Add New Author</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Форма для додавання нової книги -->
+          <form action="#" id="addAuthorForm" method="POST" th:action="@{/authors}" th:object="${emptyAuthor}">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+              <label for="authorFirstName" class="form-label">First Name</label>
+              <input type="text" th:field="*{firstName}" class="form-control" id="authorFirstName" name="firstName" placeholder="Enter first name" required>
+            </div>
+            <div class="mb-3">
+              <label for="authorLastName" class="form-label">Last Name</label>
+              <input type="text" th:field="*{lastName}" class="form-control" id="authorLastName" name="lastName" placeholder="Enter last name" required>
+            </div>
+            <div class="mb-3">
+              <label for="authorCountry" class="form-label">Country</label>
+              <input type="text" th:field="*{country}" class="form-control" id="authorCountry" name="country" placeholder="Enter country">
+            </div>
+            <div class="mb-3">
+              <label for="authorImg" class="form-label">Image</label>
+              <input type="text" th:field="*{img}" class="form-control" id="authorImg" name="image" placeholder="Enter image path">
+            </div>
+            <div class="mb-3">
+              <label for="authorBirthday" class="form-label">Date of Birth</label>
+              <input type="date" th:field="*{dateOfBirth}" class="form-control" id="authorBirthday" name="date_of_birth" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="isAlive" onchange="toggleDeathDate()" checked>
+              <label for="isAlive" class="form-check-label">Author is Alive</label>
+            </div>
+
+            <!-- Поле для введення дати смерті -->
+            <div class="mb-3">
+              <label for="authorDeathday" class="form-label">Date of Death</label>
+              <input type="date" th:field="*{dateOfDeath}" class="form-control" id="authorDeathday" name="date_of_death"   disabled>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" onclick="submitAuthor()">Add Author</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Footer -->
 <footer class="bg-dark text-white py-3">
@@ -78,6 +134,38 @@
 <!-- Підключення Bootstrap JS та залежностей -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Функція для активації або деактивації поля дати смерті
+  function toggleDeathDate() {
+    const isAliveCheckbox = document.getElementById('isAlive');
+    const deathDateField = document.getElementById('authorDeathday');
+
+    // Якщо чекбокс "Author is Alive" увімкнений, робимо поле недоступним
+    if (isAliveCheckbox.checked) {
+      deathDateField.disabled = true;
+      deathDateField.value = ""; // Встановлюємо порожнє значення
+    } else {
+      deathDateField.disabled = false;
+    }
+  }
+
+  // Функція для відправки форми
+  function submitAuthor() {
+    const isAliveCheckbox = document.getElementById('isAlive');
+    const deathDateField = document.getElementById('authorDeathday');
+
+    // Якщо автор живий, встановлюємо значення поля смерті в null перед відправкою форми
+    if (isAliveCheckbox.checked) {
+      deathDateField.value = ""; // Або можна залишити порожнім для інтерпретації як null на сервері
+    }
+
+    // Відправка форми
+    document.getElementById('addAuthorForm').submit();
+  }
+</script>
+
 </body>
 </html>

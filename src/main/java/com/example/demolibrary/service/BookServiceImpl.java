@@ -1,5 +1,6 @@
 package com.example.demolibrary.service;
 
+import com.example.demolibrary.entity.Author;
 import com.example.demolibrary.entity.Book;
 import com.example.demolibrary.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ import java.util.*;
 public class BookServiceImpl implements BookService {
 
     private BookRepository bookRepository;
+    private AuthorService authorService;
 
-    public BookServiceImpl(BookRepository bookRepository) {
+    public BookServiceImpl(BookRepository bookRepository,AuthorService authorService) {
         this.bookRepository = bookRepository;
+        this.authorService = authorService;
     }
 
     @Override
@@ -59,6 +62,9 @@ public class BookServiceImpl implements BookService {
     public void update(Book book) {
 
         if (bookRepository.existsById(book.getId())) {
+            int authorId = book.getAuthor().getId();
+            Author author = authorService.findById(authorId);
+            book.setAuthor(author);
            bookRepository.save(book);
         } else {
             throw new RuntimeException("Book not found for id: " + book.getId());

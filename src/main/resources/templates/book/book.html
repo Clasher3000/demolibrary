@@ -46,8 +46,8 @@
 <main class="container my-5">
   <div class="row">
     <div class="col-md-4">
-      <img th:if="${book.cover!=null}" th:src="${book.cover}" class="img-fluid rounded mb-4" alt="Cover of the book"/>
-      <img th:if="${book.cover==null}" th:src="@{/Images/unknown-cover.png}"
+      <img th:if="${book.cover!=''}" th:src="${book.cover}" class="img-fluid rounded mb-4" alt="Cover of the book"/>
+      <img th:if="${book.cover==''}" th:src="@{/Images/unknown-cover.png}"
            class="img-fluid rounded mb-4" alt="Cover of the book"/>
     </div>
     <div class="col-md-8 d-flex flex-column justify-content-start">
@@ -107,19 +107,18 @@
               <input type="text" th:field="*{title}" class="form-control" id="bookTitle" name="title" th:placeholder="${book.title}" required>
             </div>
 
-            <!-- Author Select Dropdown -->
-            <div class="mb-3">
-              <label for="authorSelect" class="form-label">Author</label>
-              <select class="form-select" id="authorSelect" name="author.id" th:field="*{author.id}">
-                <option value="" disabled selected>Select an Author</option>
-                <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName + ' ' + author.lastName}"></option>
-              </select>
-            </div>
+
 
             <!-- Book Cover -->
             <div class="mb-3">
               <label for="bookCover" class="form-label">Book Cover path</label>
               <input type="text" th:field="*{cover}" class="form-control" id="bookCover" name="cover" th:placeholder="${book.cover}">
+            </div>
+            <div class="mb-3" >
+              <label for="bookAuthor" class="form-label">Book Author</label>
+              <select th:field="*{author.id}" class="form-control" id="bookAuthor">
+                <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName + ' ' + author.lastName}" ></option>
+              </select>
             </div>
 
             <!-- Book Year -->

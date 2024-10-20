@@ -9,7 +9,12 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" />
   <style>
     /* CSS для фіксації кнопки у правому нижньому куті */
-
+    .fixed-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000; /* Вищий z-index, щоб кнопка була поверх інших елементів */
+    }
   </style>
 </head>
 
@@ -56,9 +61,9 @@
         <div class="col-md-4" th:each="tempBook : ${books}">
           <div class="card mb-4">
             <div class="card-header py-2">
-              <img th:if="${tempBook.cover != null}" th:src="${tempBook.cover}" class="card-img-top"
+              <img th:if="${tempBook.cover != ''}" th:src="${tempBook.cover}" class="card-img-top"
                    alt="Book Cover" style="height: 250px; object-fit: cover;" />
-              <img th:if="${tempBook.cover == null}" th:src="@{/Images/unknown-cover.png}" class="card-img-top"
+              <img th:if="${tempBook.cover == ''}" th:src="@{/Images/unknown-cover.png}" class="card-img-top"
                    alt="Book Cover" style="height: 250px; object-fit: cover;" />
             </div>
             <div class="card-body">

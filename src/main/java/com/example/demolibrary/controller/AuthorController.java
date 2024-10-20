@@ -22,6 +22,7 @@ public class AuthorController {
     public String findAuthors(Model model) {
         List<Author> authors = authorService.findAll();
         model.addAttribute("authors", authors);
+        model.addAttribute("emptyAuthor", new Author());
         return "author/authors";
     }
 
@@ -36,20 +37,19 @@ public class AuthorController {
     @PostMapping
     public String createAuthor(@ModelAttribute Author author) {
         authorService.save(author);
-        return "redirect:/author/authors";
+        return "redirect:/authors";
     }
-
 
     @PutMapping("/{id}")
     public String updateAuthor(@PathVariable int id, @ModelAttribute Author author) {
         author.setId(id);
         authorService.update(author);
-        return "redirect:/author/authors";
+        return "redirect:/authors";
     }
 
     @DeleteMapping("/{id}")
     public String deleteAuthor(@PathVariable int id) {
         authorService.deleteById(id);
-        return "redirect:/author/authors";
+        return "redirect:/authors";
     }
 }
