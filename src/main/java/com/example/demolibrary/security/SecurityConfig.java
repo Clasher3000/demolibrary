@@ -25,14 +25,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET,"/**").permitAll() // дозволяє доступ до всіх сторінок для всіх
+                        .requestMatchers(HttpMethod.GET,"/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                 )
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll // дозволяє доступ до стандартної форми логіну для всіх
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll
                 )
-                .logout(LogoutConfigurer::permitAll // дозволяє всім логаут
+                .logout(LogoutConfigurer::permitAll
                 );
         return http.build();
     }

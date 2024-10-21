@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/authors") // Базовий шлях для всіх методів
+@RequestMapping("/authors")
 public class AuthorController {
 
     private final AuthorService authorService;
@@ -27,8 +27,11 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public String findAuthor(@PathVariable int id, Model model) {
+    public String findAuthor(@PathVariable int id, Model model) throws Exception {
         Author author = authorService.findById(id);
+        if (author == null) {
+            throw new Exception("Author not found");
+        }
         model.addAttribute("author", author);
         return "author/author";
     }

@@ -14,7 +14,7 @@
     <nav class="d-flex justify-content-center flex-grow-1">
       <ul class="nav">
         <li class="nav-item"><a th:href="@{/}" class="nav-link text-white">Home</a></li>
-        <li class="nav-item"><a th:href="@{/books}" class="nav-link active-link">Books</a></li>
+        <li class="nav-item"><a th:href="@{/books}" class="nav-link text-white">Books</a></li>
         <li class="nav-item"><a th:href="@{/authors}" class="nav-link text-white">Authors</a></li>
         <li class="nav-item"><a th:href="@{/about}" class="nav-link text-white">About</a></li>
         <li class="nav-item"><a th:href="@{/contact}" class="nav-link text-white">Contact</a></li>
@@ -41,8 +41,8 @@
 </header>
 <div class="container mt-5">
   <h1 class="text-danger">Error!</h1>
-  <p th:text="${errorMessage}"></p> <!-- Тут відобразиться ваше повідомлення про помилку -->
-  <a class="btn btn-primary" href="/static" role="button">Back</a>
+  <p th:text="${errorMessage}"></p>
+  <a class="btn btn-primary" th:href="@{/}" role="button">Back</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

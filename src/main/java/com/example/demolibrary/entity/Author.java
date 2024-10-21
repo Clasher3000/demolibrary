@@ -17,12 +17,12 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "first_name")
-    @NotNull
-    @Length(min = 2)
+    @NotNull(message = "First name can't be null")
+    @Length(min = 2, message = "First name must be at least 2 words")
     private String firstName;
     @Column(name = "last_name")
-    @NotNull
-    @Length(min = 2)
+    @NotNull(message = "Last name can't be null")
+    @Length(min = 2,message = "Last name must be at least 2 words")
     private String lastName;
     private String country;
     @OneToMany(mappedBy = "author",
@@ -32,7 +32,7 @@ public class Author {
     private List<Book> books;
     private String img;
     @Column(name = "date_of_birth")
-    @NotNull
+    @NotNull(message = "Birth date can't be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     @Column(name = "date_of_death")
